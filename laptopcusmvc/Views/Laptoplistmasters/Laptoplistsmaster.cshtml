@@ -1,0 +1,106 @@
+﻿@model IEnumerable<tech4you.Models.Laptoplistmaster>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+
+</head>
+
+<body>
+    <div class="bgcolor">
+        <div class="bgimg">
+
+            <div>
+                <div class="content">
+                    <div class="bgcontent">
+                        <b><h2>Tech4You</h2></b>
+                        <h1><b>Create Your Own Laptop</b></h1>
+                        <h3>Customize everything. Create everything. Have your unique thing.</h3>
+                        <h3>Make the better as best. Make the pretty as prettiest.</h3>
+                        <a href="#chooseproduct"><button class="btn-color">Get Started</button></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="chooseproduct" class="container" >
+            <h2 class="text-center m-5"><b>Choose and Start Customizing....</b></h2>
+
+            @foreach (var item in Model)
+            {
+                <div class="single-box row justify-content-around ">
+                    <div>
+                        @*<img src="./images/dell.webp" alt="image" width="400">*@
+                        @*<img src="~/lib/images/dell.webp" alt="image" width="400" />*@
+
+                        <img src="@Url.Content(item.Laptopimage)" width="400" height="250" />
+
+                        @*@Html.DisplayFor(modelItem => item.Laptopimage)*@
+                    </div>
+                    <div>
+
+                        <h3><i class="bi bi-tag-fill"></i> Price</h3>
+                        <p><Button class="btn-color-price2"><b>Rs. @Html.DisplayFor(modelItem => item.Price)</b></Button> Offer price</p>
+                        <br>
+                        <button class="btn-color"><b>Buy Now</b></button>
+                        <a asp-action="Customize" asp-controller="Customizedlaptops" asp-route-id="@item.Laptopid" class="btn-color"><b>Customize & Buy</b></a>
+
+                    </div>
+                    <div class="pl-lg-5">
+                        <div>
+                            <h2>@Html.DisplayFor(modelItem => item.Brandname)</h2>
+                            <h4>@Html.DisplayFor(modelItem => item.Laptopname)</h4>
+                        </div>
+
+                        <div>
+                            <p>
+                                <span class="bi bi-cpu">&nbsp;@Html.DisplayFor(modelItem => item.Processor)</span>
+                            </p>
+                            <p>
+                                <span class="bi bi-windows">    @Html.DisplayFor(modelItem => item.Os)</span>
+                            </p>
+                            <p><span class="bi bi-hdd">     @Html.DisplayFor(modelItem => item.Storagetype)</span></p>
+
+                            <p>
+                                <span class="bi bi-memory">     @Html.DisplayFor(modelItem => item.Memory)</span>&nbsp;
+
+                                <span class="bi bi-badge-hd">       @Html.DisplayFor(modelItem => item.Display)</span>
+                            </p>
+                            <p>
+                                <span class="bi bi-paint-bucket">       @Html.DisplayFor(modelItem => item.Productcolor)</span>&nbsp;-
+
+                                @Html.DisplayFor(modelItem => item.Antivirus) free trial -
+                                @Html.DisplayFor(modelItem => item.Warranty) warranty
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</body>
+
+</html>

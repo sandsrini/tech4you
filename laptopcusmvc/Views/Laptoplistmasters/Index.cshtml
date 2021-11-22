@@ -1,0 +1,101 @@
+﻿@model IEnumerable<tech4you.Models.Laptoplistmaster>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Laptopname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brandname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Processor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Display)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Os)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Storagetype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Productcolor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Antivirus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Warranty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Laptopimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Memory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Laptopname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brandname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Display)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Os)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Storagetype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productcolor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Antivirus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Warranty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Laptopimage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memory)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Laptopid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Laptopid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Laptopid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

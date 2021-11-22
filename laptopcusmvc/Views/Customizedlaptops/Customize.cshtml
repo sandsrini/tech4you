@@ -1,0 +1,487 @@
+﻿@model tech4you.Models.Customizedlaptop
+
+@{
+    ViewData["Title"] = "Customize";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+    </script>
+    <link href="~/css/StyleSheet1.css" rel="stylesheet" />
+
+</head>
+<body class="bg-light">
+    <form asp-action="Customize">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="container">
+
+            <div class="row justify-content-around single-box">
+                <div>
+                    <img src="ViewData['laptopimage']" alt="image" width="400" />
+                </div>
+                <div>
+
+                    <h3><i class="bi bi-tag-fill"></i> Price</h3>
+                    <input class="btn-color-price pricemargin" value="@ViewData["Price"]" readonly />Offer price
+                    <br>
+                    <button type="button" class="btn-color"><b>Customize & Buy</b></button>
+                </div>
+                <div class="pl-lg-5">
+                    <div>
+                        <h2><input asp-for="Cusbrandname" class="nobor" value="@ViewData["Brandname"]" readonly /></h2>
+
+                        @*<input asp-for="Cuslaptopname" class="-control" />*@
+
+                        <h4>
+                            <input asp-for="Cuslaptopname" class="nobor" value="@ViewData["Laptopname"]" readonly />
+                        </h4>
+                        <h4><input asp-for="Cusantivirus" class="nobor" value="@ViewData["Antivirus"]" readonly /> *It is mandatory</h4>
+                        <p>
+                            <span class="bi bi-cpu">
+                                @ViewData["Processor"]
+                            </span>
+                        </p>
+                        <p><span class="bi bi-paint-bucket">@ViewData["Productcolor"]</span></p>
+                    </div>
+
+                    <div>
+
+                    </div>
+                </div>
+            </div><br>
+        </div>
+        <div class="container fborder">
+            <div class="text-center">
+
+                <h2>Customize Your Product</h2>
+            </div>
+            <div class="row">
+                <div class="formspace col-6 ml-0">
+                    <div>
+                        <div class="row m-5">
+                            <label class="w-25">Full Name :</label>
+
+                            <input asp-for="Username" class="option-width" placeholder="Enter your name" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="row  m-5">
+                            <label class="w-25">Email ID :</label>
+
+                            <input asp-for="Email" class="option-width" placeholder="Enter your email id" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row  m-5">
+                        <label class="w-25">Memory :</label>
+                        <select asp-for="Processorid" class="option-width" asp-items="ViewBag.Processorid" onchange="changeprocessor()" id="processor"></select>
+                        <input id="processorid" class="btn-color-price btnsp" value=0 readonly />
+                    </div>
+
+                    <div class="row  m-5">
+                        <label class="w-25" for="">OS :</label>
+                        <select asp-for="Osid" class="option-width" asp-items="ViewBag.Osid" onchange="changeos()" id="os"></select>
+                        <input id="osvalue" class="btn-color-price btnsp" readonly value=0 />
+                    </div>
+
+                    <div class="row  m-5">
+                        <label class="w-25" for="">Display :</label>
+                        <select asp-for="Displayid" class="option-width" asp-items="ViewBag.Displayid" id="display" onchange="changedisplay()"></select>
+                        <input id="displayid" class="btn-color-price btnsp" readonly value=0 />
+                    </div>
+
+                    <div class="row  m-5">
+                        <label class="w-25" for="">Storage Type :</label>
+                        <select asp-for="Storagetypeid" class="option-width" asp-items="ViewBag.Storagetypeid" id="storage" onchange="changestorage()"></select>
+                        <input id="storageid" class="btn-color-price btnsp" readonly value=0 />
+                    </div>
+
+             
+                    <div class="row  m-5">
+                        <label class="w-25">Warranty :</label>
+
+                        <select asp-for="Warrantyid" class="option-width" asp-items="ViewBag.Warrantyid" onchange="changevalue()" id="warranty"></select>
+                        <input id="warrantyin" class="btn-color-price btnsp" value=0 readonly />
+                    </div>
+                    <div class="text-center">
+                        <input type="button" value="Confirm changes" class="btn-color" onclick="price1()" />
+                    </div>
+                    
+                </div>
+                <div class="col-6 confirm">
+                    <div class="row  m-5">
+                        <label class="w-25">Customized Price</label>
+                        <input type="number" asp-for="Cusprice" class="btn-color-price1" id="price" value="@ViewData["price"]" readonly />
+                    </div>
+                    <div class="row  m-5">
+                        <div>
+                            <label class="nooflaptops">Number of Laptops</label>
+                            <button type="button" class="plusminus" onclick="sub()">-</button>&nbsp;&nbsp;
+                            <input type="text" asp-for="Quantity" class="option-width quan" id="Quantity" value="1" />
+
+                            &nbsp;&nbsp;<button type="button" class="plusminus" onclick="add()">+</button>
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row m-5">
+                        <label class="w-25">Grand Total</label>
+                        <input asp-for="Grandtotal" class="btn-color-price1" value="@ViewData["Price"]" id="totalprice" readonly />
+                    </div>
+                    <div class="text-center">
+
+                        <input type="submit" value="Confirm & Buy" class="btn-color" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function changevalue() {
+
+            setInterval(() => {
+                var a = document.getElementById("warranty").value;
+                /*document.getElementById("warrantyin").value = a;*/
+                warrantyprice();
+
+                if (a == 1) {
+                    document.getElementById("warrantyin").value = warrantycost1;
+                    //document.getElementById("price").value = warrantycost1 + parseInt(document.getElementById("price").value);
+
+                }
+                else if (a == 2) {
+                    document.getElementById("warrantyin").value = warrantycost2;
+                    //document.getElementById("totalprice").value = warrantycost2 + parseInt(document.getElementById("totalprice").value);
+                }
+                else {
+                    document.getElementById("warrantyin").value = warrantycost3;
+                    //document.getElementById("totalprice").value = warrantycost3 + parseInt(document.getElementById("totalprice").value);
+                }
+            }, 100)
+
+        }
+        function changestorage() {
+            setInterval(() => {
+                var a = document.getElementById("storage").value;
+                /*document.getElementById("storageid").value = a;*/
+                storageprice();
+
+                if (a == 1) {
+                    document.getElementById("storageid").value = storageprice1;
+                    //document.getElementById("totalprice").value = storageprice1 + parseInt(document.getElementById("totalprice").value);
+                }
+                else if (a == 2) {
+                    document.getElementById("storageid").value = storageprice2;
+                    //document.getElementById("totalprice").value = storageprice2 + parseInt(document.getElementById("totalprice").value);
+                }
+                else {
+                    document.getElementById("storageid").value = storageprice3;
+                    //document.getElementById("totalprice").value = storageprice3 + parseInt(document.getElementById("totalprice").value);
+                }
+            }, 100)
+
+        }
+        function changedisplay() {
+            setInterval(() => {
+                var a = document.getElementById("display").value;
+                /*document.getElementById("displayid").value = a;*/
+                displayprice();
+
+                if (a == 1) {
+                    document.getElementById("displayid").value = displaycost1;
+                    //document.getElementById("totalprice").value = displaycost1 + parseInt(document.getElementById("totalprice").value);
+
+                }
+                else if (a == 2) {
+                    document.getElementById("displayid").value = displaycost2;
+                    //document.getElementById("totalprice").value = displaycost2 + parseInt(document.getElementById("totalprice").value);
+                }
+                else {
+                    document.getElementById("displayid").value = displaycost3;
+                    //document.getElementById("totalprice").value = displaycost3 + parseInt(document.getElementById("totalprice").value);
+                }
+            }, 100)
+
+        }
+        function changeos() {
+            setInterval(() => {
+                var a = document.getElementById("os").value;
+                /*document.getElementById("os").value = a;*/
+                osprice();
+
+                if (a == 1) {
+                    document.getElementById("osvalue").value = oscost1;
+                    //document.getElementById("totalprice").value = oscost1 + parseInt(document.getElementById("totalprice").value);
+                }
+                else if (a == 2) {
+                    document.getElementById("osvalue").value = oscost2;
+                    //document.getElementById("totalprice").value = oscost2 + parseInt(document.getElementById("totalprice").value);
+                }
+                else {
+                    document.getElementById("osvalue").value = oscost3;
+                    //document.getElementById("totalprice").value = oscost3 + parseInt(document.getElementById("totalprice").value);
+                }
+            }, 100)
+
+        }
+        function changeprocessor() {
+            setInterval(() => {
+                var a = document.getElementById("processor").value;
+                /*document.getElementById("processor").value = a;*/
+                processorprice();
+
+                if (a == 1) {
+
+                    document.getElementById("processorid").value = processorcost1;
+                    console.log(typeof (processorcost1), processorcost1)
+
+                    //document.getElementById("totalprice").value = processorcost1 + parseInt(document.getElementById("totalprice").value);
+                    //var b = document.getElementById("totalprice").value;
+                    //console.log(typeof (b))
+                }
+                else if (a == 2) {
+                    document.getElementById("processorid").value = processorcost2;
+                    //document.getElementById("totalprice").value = processorcost2 + parseInt(document.getElementById("totalprice").value);
+                }
+                else {
+                    document.getElementById("processorid").value = processorcost3;
+                    //document.getElementById("totalprice").value = processorcost3 + parseInt(document.getElementById("totalprice").value);
+                }
+            }, 100)
+
+        }
+
+        //$(document).ready(function () {
+        //    $("#storage").on("change", function () {
+        //        $.ajax({
+        //            type: "Get",
+        //            url: "/Customizedlaptops/Getprice",
+        //            data: { "id": $("#storage").val() },
+        //            success: function (response) {
+        //                var items = '';
+        //                $("#storageid").html(items);
+
+        //                //$(response).each(function () {
+        //                //    //items += "<option value=" + this.text + ">" + this.text + "</option>";
+        //                //    items += "<option value=" + this.text + ">" + this.text + "</option>";
+
+
+
+        //                //})
+        //                /*$("#book").html(items);*/
+        //            },
+        //            failure: function (response) {
+        //                alert(response.responseText);
+        //            },
+        //            error: function (response) {
+        //                alert(response.responseText);
+        //            }
+        //        });
+        //    })
+        //});
+        function add() {
+            var a = document.getElementById("Quantity").value;
+            document.getElementById("Quantity").value = parseInt(a) + 1;
+            //document.getElementById("totalprice").value = parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price"));
+            //console.log(parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price")))
+            var q = parseInt(document.getElementById("Quantity").value);
+            var p = parseInt(document.getElementById("price").value);
+            document.getElementById("totalprice").value = q * p;
+        }
+
+        function sub() {
+            var a = document.getElementById("Quantity").value;
+            if (a > 1) {
+                document.getElementById("Quantity").value = parseInt(document.getElementById("Quantity").value) - 1;
+                //document.getElementById("totalprice").value = parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price"));
+                var q = parseInt(document.getElementById("Quantity").value);
+                var p = parseInt(document.getElementById("price").value);
+                document.getElementById("totalprice").value = q * p;
+            }
+            else {
+                document.getElementById("Quantity").value = 1;
+            }
+        }
+        function price1() {
+            var a = parseInt(document.getElementById("price").value)
+            var b = parseInt(document.getElementById("processorid").value)
+            var c = parseInt(document.getElementById("osvalue").value)
+            var d = parseInt(document.getElementById("displayid").value)
+            var e = parseInt(document.getElementById("storageid").value)
+            var f = parseInt(document.getElementById("warrantyin").value)
+            console.log("values", a, b, c, d, e, f);
+
+            document.getElementById("price").value = a + b + c + d + e + f;
+            document.getElementById("totalprice").value = parseInt(document.getElementById("price").value);
+
+            console.log("totalprice", totalprice);
+        }
+        //function grandtotal() {
+        //}
+        var processorcost1 = 0
+        var processorcost2 = 0
+        var processorcost3 = 0
+        function processorprice() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/Customizedlaptops/Getprocessorprice",
+                    data: "json",
+                    success: function (data) {
+                        for (id in data.data) {
+                            for (record in data.data[id]) {
+                                if (record == "Processorname") {
+                                    console.log("arr", data.data)
+                                    if (data.data[id][record] == "4GB") {
+                                        processorcost1 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "8GB") {
+                                        processorcost2 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "12GB") {
+                                        processorcost3 = data.data[id].Price
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        }
+        var oscost1 = 0
+        var oscost2 = 0
+        var oscost3 = 0
+        function osprice() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "Get",
+                    data: "json",
+                    url: "/Customizedlaptops/Getosprice",
+                    success: function (data) {
+                        for (id in data.data) {
+                            for (record in data.data[id]) {
+                                if (record == "Osname") {
+                                    console.log("arr", data.data)
+                                    if (data.data[id][record] == "Windows 8") {
+                                        oscost1 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "Windows 10") {
+                                        oscost2 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "Windows 11") {
+                                        oscost3 = data.data[id].Price
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        }
+        var displaycost1 = 0
+        var displaycost2 = 0
+        var displaycost3 = 0
+        function displayprice() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/Customizedlaptops/Getdisplayprice",
+                    data: "json",
+                    success: function (data) {
+                        for (id in data.data) {
+                            for (record in data.data[id]) {
+                                if (record == "Displaysize") {
+                                    console.log("arr", data.data)
+                                    if (data.data[id][record] == "14inch FHD") {
+                                        displaycost1 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "15inch FHD") {
+                                        displaycost2 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "16inch FHD") {
+                                        displaycost3 = data.data[id].Price
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        }
+        var storageprice1 = 0
+        var storageprice2 = 0
+        var storageprice3 = 0
+        function storageprice() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/Customizedlaptops/Getstorageprice",
+                    data: "json",
+                    success: function (data) {
+                        for (id in data.data) {
+                            for (record in data.data[id]) {
+                                if (record == "Storagetypename") {
+                                    console.log("arr", data.data)
+                                    if (data.data[id][record] == "256GB SSD") {
+                                        storageprice1 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "500GB SSD") {
+                                        storageprice2 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "1TB HDD") {
+                                        storageprice3 = data.data[id].Price
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        }
+        var warrantycost1 = 0
+        var warrantycost2 = 0
+        var warrantycost3 = 0
+        function warrantyprice() {
+            $(document).ready(function () {
+                $.ajax({
+                    type: "Get",
+                    url: "/Customizedlaptops/Getwarrantyprice",
+                    data: "json",
+                    success: function (data) {
+                        for (id in data.data) {
+                            for (record in data.data[id]) {
+                                if (record == "Warrantyperiod") {
+                                    console.log("arr", data.data)
+                                    if (data.data[id][record] == "1 year") {
+                                        warrantycost1 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "2 years") {
+                                        warrantycost2 = data.data[id].Price
+                                    }
+                                    if (data.data[id][record] == "3 years") {
+                                        warrantycost3 = data.data[id].Price
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+}

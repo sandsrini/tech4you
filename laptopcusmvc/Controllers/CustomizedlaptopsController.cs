@@ -57,27 +57,26 @@ namespace webapp2mvc.Controllers
         public async Task<IActionResult> Customize(int id)
         {
             
-            //var laptoplist = await _context.laptoplistmasters.findasync(id);
+            
             HttpClient cli = _api.Initial();
             var std1 = new Laptoplistmaster();
-            //var display = new Displaytbl();
+            
             Customizedlaptop stud = new Customizedlaptop();
             HttpResponseMessage result2 = await cli.GetAsync($"api/laptoplistmasters/{id}");
             HttpResponseMessage response = await cli.GetAsync($"api/Customizedlaptops/{id}");
-            //HttpResponseMessage displayresponse = await cli.GetAsync($"api/Displaytbls/{id}");
+            
 
 
 
             if (result2.IsSuccessStatusCode)
             {
                 var res2 = result2.Content.ReadAsStringAsync().Result;
-                //var res = displayresponse.Content.ReadAsStringAsync().Result;
+                
                 string data = response.Content.ReadAsStringAsync().Result;
                 std1 = JsonConvert.DeserializeObject<Laptoplistmaster>(res2);
-                //display = JsonConvert.DeserializeObject<Displaytbl>(res);
-                //stud = JsonConvert.DeserializeObject<Customizedlaptop>(data);
+                
             }
-            //ViewData["price"] = display.Price;
+            
             ViewData["Brandname"] = std1.Brandname;
             ViewData["Processor"] = std1.Processor;
             ViewData["Memory"] = std1.Memory;
@@ -90,7 +89,7 @@ namespace webapp2mvc.Controllers
             ViewData["Display"] = std1.Display;
             ViewData["laptopimage"] = std1.Laptopimage;
 
-            //ViewBag.price = new SelectList(_context.Displaytbls, "price","Displaysize");
+            
 
             var demo = new SelectList(_context.Displaytbls, "Price", "Displaysize");
             var demo1 = new SelectList(_context.Displaytbls, "Displaysize", "Displaysize");
@@ -226,18 +225,6 @@ namespace webapp2mvc.Controllers
         {
             return _context.Customizedlaptops.Any(e => e.Cuslaptopid == id);
         }
-
-        //    public async Task<IActionResult> displayprice(int id)
-        //{
-        //    var quan = new Displaytbl();
-        //        var displaytbl = await _context.Displaytbls
-        //            .FirstOrDefaultAsync(m => m.Displayid == id);
-        //        if (displaytbl == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        return View();
-        //}
         public IActionResult Getprocessorprice()
         {
 

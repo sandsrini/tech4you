@@ -160,21 +160,21 @@
 
             setInterval(() => {
                 var a = document.getElementById("warranty").value;
-                /*document.getElementById("warrantyin").value = a;*/
+                
                 warrantyprice();
 
                 if (a == 1) {
                     document.getElementById("warrantyin").value = warrantycost1;
-                    //document.getElementById("price").value = warrantycost1 + parseInt(document.getElementById("price").value);
+                    
 
                 }
                 else if (a == 2) {
                     document.getElementById("warrantyin").value = warrantycost2;
-                    //document.getElementById("totalprice").value = warrantycost2 + parseInt(document.getElementById("totalprice").value);
+                    
                 }
                 else {
                     document.getElementById("warrantyin").value = warrantycost3;
-                    //document.getElementById("totalprice").value = warrantycost3 + parseInt(document.getElementById("totalprice").value);
+                    
                 }
             }, 100)
 
@@ -182,20 +182,18 @@
         function changestorage() {
             setInterval(() => {
                 var a = document.getElementById("storage").value;
-                /*document.getElementById("storageid").value = a;*/
+                
                 storageprice();
 
                 if (a == 1) {
                     document.getElementById("storageid").value = storageprice1;
-                    //document.getElementById("totalprice").value = storageprice1 + parseInt(document.getElementById("totalprice").value);
+                    
                 }
                 else if (a == 2) {
                     document.getElementById("storageid").value = storageprice2;
-                    //document.getElementById("totalprice").value = storageprice2 + parseInt(document.getElementById("totalprice").value);
                 }
                 else {
                     document.getElementById("storageid").value = storageprice3;
-                    //document.getElementById("totalprice").value = storageprice3 + parseInt(document.getElementById("totalprice").value);
                 }
             }, 100)
 
@@ -203,21 +201,17 @@
         function changedisplay() {
             setInterval(() => {
                 var a = document.getElementById("display").value;
-                /*document.getElementById("displayid").value = a;*/
                 displayprice();
 
                 if (a == 1) {
                     document.getElementById("displayid").value = displaycost1;
-                    //document.getElementById("totalprice").value = displaycost1 + parseInt(document.getElementById("totalprice").value);
 
                 }
                 else if (a == 2) {
                     document.getElementById("displayid").value = displaycost2;
-                    //document.getElementById("totalprice").value = displaycost2 + parseInt(document.getElementById("totalprice").value);
                 }
                 else {
                     document.getElementById("displayid").value = displaycost3;
-                    //document.getElementById("totalprice").value = displaycost3 + parseInt(document.getElementById("totalprice").value);
                 }
             }, 100)
 
@@ -225,20 +219,16 @@
         function changeos() {
             setInterval(() => {
                 var a = document.getElementById("os").value;
-                /*document.getElementById("os").value = a;*/
                 osprice();
 
                 if (a == 1) {
                     document.getElementById("osvalue").value = oscost1;
-                    //document.getElementById("totalprice").value = oscost1 + parseInt(document.getElementById("totalprice").value);
                 }
                 else if (a == 2) {
                     document.getElementById("osvalue").value = oscost2;
-                    //document.getElementById("totalprice").value = oscost2 + parseInt(document.getElementById("totalprice").value);
                 }
                 else {
                     document.getElementById("osvalue").value = oscost3;
-                    //document.getElementById("totalprice").value = oscost3 + parseInt(document.getElementById("totalprice").value);
                 }
             }, 100)
 
@@ -246,7 +236,6 @@
         function changeprocessor() {
             setInterval(() => {
                 var a = document.getElementById("processor").value;
-                /*document.getElementById("processor").value = a;*/
                 processorprice();
 
                 if (a == 1) {
@@ -254,55 +243,23 @@
                     document.getElementById("processorid").value = processorcost1;
                     console.log(typeof (processorcost1), processorcost1)
 
-                    //document.getElementById("totalprice").value = processorcost1 + parseInt(document.getElementById("totalprice").value);
-                    //var b = document.getElementById("totalprice").value;
-                    //console.log(typeof (b))
+                   
                 }
                 else if (a == 2) {
                     document.getElementById("processorid").value = processorcost2;
-                    //document.getElementById("totalprice").value = processorcost2 + parseInt(document.getElementById("totalprice").value);
                 }
                 else {
                     document.getElementById("processorid").value = processorcost3;
-                    //document.getElementById("totalprice").value = processorcost3 + parseInt(document.getElementById("totalprice").value);
                 }
             }, 100)
 
         }
 
-        //$(document).ready(function () {
-        //    $("#storage").on("change", function () {
-        //        $.ajax({
-        //            type: "Get",
-        //            url: "/Customizedlaptops/Getprice",
-        //            data: { "id": $("#storage").val() },
-        //            success: function (response) {
-        //                var items = '';
-        //                $("#storageid").html(items);
-
-        //                //$(response).each(function () {
-        //                //    //items += "<option value=" + this.text + ">" + this.text + "</option>";
-        //                //    items += "<option value=" + this.text + ">" + this.text + "</option>";
-
-
-
-        //                //})
-        //                /*$("#book").html(items);*/
-        //            },
-        //            failure: function (response) {
-        //                alert(response.responseText);
-        //            },
-        //            error: function (response) {
-        //                alert(response.responseText);
-        //            }
-        //        });
-        //    })
-        //});
+        
         function add() {
             var a = document.getElementById("Quantity").value;
             document.getElementById("Quantity").value = parseInt(a) + 1;
-            //document.getElementById("totalprice").value = parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price"));
-            //console.log(parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price")))
+            
             var q = parseInt(document.getElementById("Quantity").value);
             var p = parseInt(document.getElementById("price").value);
             document.getElementById("totalprice").value = q * p;
@@ -312,7 +269,6 @@
             var a = document.getElementById("Quantity").value;
             if (a > 1) {
                 document.getElementById("Quantity").value = parseInt(document.getElementById("Quantity").value) - 1;
-                //document.getElementById("totalprice").value = parseInt(document.getElementById("Quantity")) * parseInt(document.getElementById("price"));
                 var q = parseInt(document.getElementById("Quantity").value);
                 var p = parseInt(document.getElementById("price").value);
                 document.getElementById("totalprice").value = q * p;
@@ -335,8 +291,7 @@
 
             console.log("totalprice", totalprice);
         }
-        //function grandtotal() {
-        //}
+        
         var processorcost1 = 0
         var processorcost2 = 0
         var processorcost3 = 0

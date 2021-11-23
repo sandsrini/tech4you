@@ -15,7 +15,7 @@ namespace tech4you.Models
         public string Cusantivirus { get; set; }
         [Required]
         [StringLength(30, ErrorMessage = "Length must be greater than 5 and less than 30", MinimumLength = 3)]
-        [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$", ErrorMessage = "Please enter your name")]
+        [RegularExpression(@"^(([A-za-z]+[\s]{1}[A-za-z]+)|([A-Za-z]+))$", ErrorMessage = "Special characters not allowed")]
         public string Username { get; set; }
         [Required]
         [EmailAddress]

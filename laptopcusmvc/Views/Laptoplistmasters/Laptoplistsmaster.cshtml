@@ -61,12 +61,13 @@
                     <div>
 
                         <h3><i class="bi bi-tag-fill"></i> Price</h3>
-                        <p><Button class="btn-color-price2"><b>Rs. @Html.DisplayFor(modelItem => item.Price)</b></Button> Offer price</p>
+                        <p><Button class="btn-color-price2"><b><i class="fa fa-rupee"></i> @Html.DisplayFor(modelItem => item.Price)</b></Button> Offer price</p>
                         <br>
-                        <button class="btn-color"><b>Buy Now</b></button>
-                        <a asp-action="Customize" asp-controller="Customizedlaptops" asp-route-id="@item.Laptopid" class="btn-color"><b>Customize & Buy</b></a>
+                        <a asp-action="Customize" asp-controller="Customizedlaptops" asp-route-id="@item.Laptopid" class="btn-color">
+                            <b>Buy Now</b></a>
+                            <a asp-action="Customize" asp-controller="Customizedlaptops" asp-route-id="@item.Laptopid" class="btn-color"><b>Customize & Buy</b></a>
 
-                    </div>
+</div>
                     <div class="pl-lg-5">
                         <div>
                             <h2>@Html.DisplayFor(modelItem => item.Brandname)</h2>

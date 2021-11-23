@@ -19,45 +19,47 @@
     <link href="~/css/StyleSheet1.css" rel="stylesheet" />
 
 </head>
-<body class="bg-light">
+<body class="customizebg">
     <form asp-action="Customize">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="container">
+        <div class="">
+            <div class="container">
 
-            <div class="row justify-content-around single-box">
-                <div>
-                    <img src="ViewData['laptopimage']" alt="image" width="400" />
-                </div>
-                <div>
-
-                    <h3><i class="bi bi-tag-fill"></i> Price</h3>
-                    <input class="btn-color-price pricemargin" value="@ViewData["Price"]" readonly />Offer price
-                    <br>
-                    <button type="button" class="btn-color"><b>Customize & Buy</b></button>
-                </div>
-                <div class="pl-lg-5">
+                <div class="row justify-content-around single-box">
                     <div>
-                        <h2><input asp-for="Cusbrandname" class="nobor" value="@ViewData["Brandname"]" readonly /></h2>
-
-                        @*<input asp-for="Cuslaptopname" class="-control" />*@
-
-                        <h4>
-                            <input asp-for="Cuslaptopname" class="nobor" value="@ViewData["Laptopname"]" readonly />
-                        </h4>
-                        <h4><input asp-for="Cusantivirus" class="nobor" value="@ViewData["Antivirus"]" readonly /> *It is mandatory</h4>
-                        <p>
-                            <span class="bi bi-cpu">
-                                @ViewData["Processor"]
-                            </span>
-                        </p>
-                        <p><span class="bi bi-paint-bucket">@ViewData["Productcolor"]</span></p>
+                        <img src="~/lib/images/dell.webp" alt="image" width="400" />
+                        @*<img src="ViewData['laptopimage']" alt="image" width="400" />*@
                     </div>
-
                     <div>
 
+                        <h3><i class="bi bi-tag-fill"></i> Price</h3>
+                        <input class="btn-color-price pricemargin" value="@ViewData["Price"]" readonly />Offer price
+                        <br>
+                        <button type="button" class="btn-color"><b>Customize & Buy</b></button>
                     </div>
-                </div>
-            </div><br>
+                    <div class="pl-lg-5">
+                        <div>
+                            <h2><input asp-for="Cusbrandname" class="nobor" value="@ViewData["Brandname"]" readonly /></h2>
+
+                            @*<input asp-for="Cuslaptopname" class="-control" />*@
+
+                            <h4>
+                                <input asp-for="Cuslaptopname" class="nobor" value="@ViewData["Laptopname"]" readonly />
+                            </h4>
+                            <h4><input asp-for="Cusantivirus" class="nobor quan" value="@ViewData["Antivirus"]" readonly /> *It is mandatory</h4>
+                            <p>
+                                <span class="bi bi-cpu">
+                                    @ViewData["Processor"]
+                                </span>
+                            </p>
+                            <p><span class="bi bi-paint-bucket">@ViewData["Productcolor"]</span></p>
+                        </div>
+
+                        <div>
+
+                        </div>
+                    </div>
+                </div><br>
+            </div>
         </div>
         <div class="container fborder">
             <div class="text-center">
@@ -68,45 +70,45 @@
                 <div class="formspace col-6 ml-0">
                     <div>
                         <div class="row m-5">
-                            <label class="w-25">Full Name :</label>
+                            <label class="w-25">Full Name </label>
 
-                            <input asp-for="Username" class="option-width" placeholder="Enter your name" />
+                            <input asp-for="Username" class="option-width" placeholder="Enter your name" /><br />
                             <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
                         <div class="row  m-5">
-                            <label class="w-25">Email ID :</label>
+                            <label class="w-25">Email ID </label>
 
                             <input asp-for="Email" class="option-width" placeholder="Enter your email id" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row  m-5">
-                        <label class="w-25">Memory :</label>
+                        <label class="w-25">Memory </label>
                         <select asp-for="Processorid" class="option-width" asp-items="ViewBag.Processorid" onchange="changeprocessor()" id="processor"></select>
                         <input id="processorid" class="btn-color-price btnsp" value=0 readonly />
                     </div>
 
                     <div class="row  m-5">
-                        <label class="w-25" for="">OS :</label>
+                        <label class="w-25" for="">OS </label>
                         <select asp-for="Osid" class="option-width" asp-items="ViewBag.Osid" onchange="changeos()" id="os"></select>
                         <input id="osvalue" class="btn-color-price btnsp" readonly value=0 />
                     </div>
 
                     <div class="row  m-5">
-                        <label class="w-25" for="">Display :</label>
+                        <label class="w-25" for="">Display </label>
                         <select asp-for="Displayid" class="option-width" asp-items="ViewBag.Displayid" id="display" onchange="changedisplay()"></select>
                         <input id="displayid" class="btn-color-price btnsp" readonly value=0 />
                     </div>
 
                     <div class="row  m-5">
-                        <label class="w-25" for="">Storage Type :</label>
+                        <label class="w-25" for="">Storage Type </label>
                         <select asp-for="Storagetypeid" class="option-width" asp-items="ViewBag.Storagetypeid" id="storage" onchange="changestorage()"></select>
                         <input id="storageid" class="btn-color-price btnsp" readonly value=0 />
                     </div>
 
              
                     <div class="row  m-5">
-                        <label class="w-25">Warranty :</label>
+                        <label class="w-25">Warranty </label>
 
                         <select asp-for="Warrantyid" class="option-width" asp-items="ViewBag.Warrantyid" onchange="changevalue()" id="warranty"></select>
                         <input id="warrantyin" class="btn-color-price btnsp" value=0 readonly />
@@ -117,23 +119,25 @@
                     
                 </div>
                 <div class="col-6 confirm">
-                    <div class="row  m-5">
-                        <label class="w-25">Customized Price</label>
+                    <div class="row">
+                        <label class="w-50">Customized Price</label>
                         <input type="number" asp-for="Cusprice" class="btn-color-price1" id="price" value="@ViewData["price"]" readonly />
                     </div>
-                    <div class="row  m-5">
-                        <div>
-                            <label class="nooflaptops">Number of Laptops</label>
+                    <div class="row">
+                        
+                            <label class="w-50">Number of Laptops</label>
+                            <div class="ml-4 row">
                             <button type="button" class="plusminus" onclick="sub()">-</button>&nbsp;&nbsp;
                             <input type="text" asp-for="Quantity" class="option-width quan" id="Quantity" value="1" />
 
                             &nbsp;&nbsp;<button type="button" class="plusminus" onclick="add()">+</button>
                             <span asp-validation-for="Quantity" class="text-danger"></span>
                         </div>
+                        
                     </div>
                     <br />
-                    <div class="row m-5">
-                        <label class="w-25">Grand Total</label>
+                    <div class="row">
+                        <label class="w-50">Grand Total</label>
                         <input asp-for="Grandtotal" class="btn-color-price1" value="@ViewData["Price"]" id="totalprice" readonly />
                     </div>
                     <div class="text-center">

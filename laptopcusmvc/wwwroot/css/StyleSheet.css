@@ -65,7 +65,7 @@
     background-image: url('../lib/images/l1.jpg');
     background-size: cover;
     justify-content: left;
-    height: 725px;
+    height: 750px;
     color:white;
 }
 .content{
@@ -82,7 +82,7 @@
     border-bottom: 1px solid black;
 }
 .bgcolor{
-    background-color:antiquewhite;
+    /*background-color:antiquewhite;*/
 }
 .divmargin{
     margin:20px;
@@ -103,7 +103,7 @@
 .fborder{
     border:1px solid;
     border-radius:50px;
-    background:white;
+    background:rgba(255,255,255,0.4);
     margin-top:20px;
     padding-top:20px;
 }
@@ -137,7 +137,7 @@ margin-left:0px;
 .nobor{
     border:none;
 }
-.nobor:active{
+.nobor:focus{
     border:none;
 }
 .pricemargin{
@@ -148,7 +148,8 @@ margin-left:0px;
     margin:0px;
 }
 .nooflaptops {
-    width: 180px;
+    width:250px;
+    margin-right:20px;
 }
 
 .confirm label{
@@ -181,14 +182,15 @@ a:hover{
     text-align: center;
     font-weight: bold;
 }
-.navbtn:hover{
-    border:1px solid;
-    border-radius:9px;
+.navbtn:hover {
+    /*border:1px solid;*/
+    border-radius: 9px;
     /*margin:0px 20px;*/
     /*padding:0px 20px 0px 20px;*/
-    text-decoration:none;
-    color:black;
-    background-color:transparent;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px white;
 }
 .navbtn {
     margin: 0px 20px;
@@ -196,9 +198,31 @@ a:hover{
     padding: 0px 20px 0px 20px;
     width: 100px;
     text-align: center;
-    background-color: #667292;
+    /*background-color: #667292;*/
     font-weight: bold;
-    color: white;
+    /*color: white;*/
     border-radius: 9px;
     text-decoration:none;
 }
+td:nth-child(even) {
+    background: #CCC
+}
+
+td:nth-child(odd) {
+    background: #FFF
+}
+.headerb {
+    box-shadow: 2px 2px 2px white;
+}
+.customizebg {
+    background: linear-gradient(to bottom, #667292 27%, #66ccff 46%);
+}
+th{
+    background-color:black;
+    color:white;
+}
+.grandtotal{
+    font-size:medium;
+    font-weight:bold;
+}
+

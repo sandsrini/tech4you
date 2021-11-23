@@ -20,41 +20,49 @@
             <div class="col-6">Invoice Number: @Html.DisplayFor(model => model.Invoiceid)</div>
 
         </div>
-        <div class="divmargin">
-            <div class="divmargin">
-                <label class="w-25">User Name </label><input class="nobor" value="@Html.DisplayFor(model => model.Username)" />
-            </div>
-            @*<div class="divmargin">
-                    <label class="w-25">Email Id</label>
-                    <input class="nobor" value="@Html.DisplayFor(model => model.Email)" />
-                </div>*@
-            @*@Html.DisplayFor(model => model.Email)*@
-            <div class="divmargin">
-                <label class="w-25">Brand Name</label><input class="nobor" value="@Html.DisplayFor(model => model.Cusbrandname)" />
-            </div>
-            <div class="divmargin">
-                <label class="w-25">Laptop Name</label><input class="nobor" value="@Html.DisplayFor(model => model.Cuslaptopname)" />
-            </div>
+        <div class="divmargin row">
+            <div class="col-6">
+                <div class="divmargin">
+                    <label class="w-50">User Name </label><input class="nobor" value="@Html.DisplayFor(model => model.Username)" />
+                </div>
+                @*<div class="divmargin">
+                <label class="w-25">Email Id</label>
+                <input class="nobor" value="@Html.DisplayFor(model => model.Email)" />
+            </div>*@
+                @*@Html.DisplayFor(model => model.Email)*@
+                <div class="divmargin">
+                    <label class="w-50">Brand Name</label><input class="nobor" value="@Html.DisplayFor(model => model.Cusbrandname)" />
+                </div>
+                <div class="divmargin">
+                    <label class="w-50">Laptop Name</label><input class="nobor" value="@Html.DisplayFor(model => model.Cuslaptopname)" />
+                </div>
 
-            <div class="divmargin">
-                <label class="w-25">Unit Price</label>
-                @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
-                <input class="nobor" value="@Html.DisplayFor(model => model.Cusprice)" />
+                <div class="divmargin">
+                    <label class="w-50">Unit Price</label>
+                    @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
+                    <input class="nobor" value="@Html.DisplayFor(model => model.Cusprice)" />
+                </div>
+                <div class="divmargin">
+                    <label class="w-50">Number of Laptops</label>
+                    @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
+                    <input class="nobor" value="@Html.DisplayFor(model => model.Quantity)" />
+                </div>
+                <div class="divmargin">
+                    @*<hr class="w-50 bg-dark"/>*@
+                    <label class="w-50 grandtotal">Grand Total</label>
+                    @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
+                    <input class="nobor grandtotal border-top-0" value="@Html.DisplayFor(model => model.Grandtotal)" />
+                </div>
             </div>
-            <div class="divmargin">
-                <label class="w-25">Number of Laptops</label>
-                @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
-                <input class="nobor" value="@Html.DisplayFor(model => model.Quantity)" />
-            </div><div class="divmargin">
-            <hr class="w-50 bg-dark"/>
-                <label class="w-25">Grand Total</label>
-                @*<label] class="">@Html.DisplayNameFor(model => model.Cusprice)</label]>*@
-                  <b><input class="nobor" value="@Html.DisplayFor(model => model.Grandtotal)" /></b>
+            <div class="col-3">
+                <img src="~/lib/images/laptop1.jpg" width="500px"/>
             </div>
         </div>
+        <br />
         <div class="text-center">
             <a asp-action="Report" class="btn-color text-decoration-none">Back to List</a>
         </div>
+        <br />
         <div class="text-center">
             <h3>Thanks for coming. Hope you got what you want.</h3>
             <h4>Expecting you again.</h4>
